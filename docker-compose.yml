@@ -1,0 +1,15 @@
+version: '3'
+services:
+  notification-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: notification-server
+    restart: unless-stopped
+    ports:
+      - "9040:9040"
+    volumes:
+      - .:/app
+    command: npm run start
+    network_mode: bridge
