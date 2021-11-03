@@ -1,8 +1,12 @@
+var publicKey = ''
 window.addEventListener('load', () => {
     fetch('/vapidPublic', {method: 'GET'})
     .then(response => response.json())
-    .then((result) => send(result.vapidPublicKey) );
+    .then((result) => publicKey=result.vapidPublicKey);
 });
+
+
+document.getElementById('subscribe').addEventListener('click',() =>send(publicKey));
 
 function send(vapidPublicKey) {
       console.log('Permision = '+ Notification.permission)
